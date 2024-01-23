@@ -1,0 +1,226 @@
+[
+  {
+    "id": 1,
+    "title": "The Art of Programming",
+    "author": "Donald E. Knuth",
+    "genre": "Computer Science",
+    "published_year": 1968,
+    "description": "A comprehensive guide to the art and science of computer programming.",
+    "language": "English",
+    "pageCount": 700,
+    "ISBN": "978-0-201-89683-1",
+    "publisher": "Addison-Wesley",
+    "coverImage": "https://example.com/art-of-programming-cover.jpg",
+    "ratings": 4.9,
+    "reviews": [
+      {
+        "user": "CodeMaster",
+        "reviewText": "An essential masterpiece for every programmer.",
+        "rating": 4.9,
+        "createdAt": "2024-01-23T12:00:00.000Z"
+      }
+    ],
+    "tags": ["Programming", "Computer Science", "Algorithm"],
+    "format": "Hardcover",
+    "edition": "First Edition",
+    "price": 39.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 9.25,
+      "width": 7.38,
+      "thickness": 1.75
+    },
+    "weight": 2.5,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-23T00:00:00.000Z"
+  },
+
+  {
+    "id": 2,
+    "title": "Sapiens: A Brief History of Humankind",
+    "author": "Yuval Noah Harari",
+    "genre": "History",
+    "published_year": 2014,
+    "description": "A captivating exploration of the history and impact of Homo sapiens on the world.",
+    "language": "English",
+    "pageCount": 464,
+    "ISBN": "978-0-06-231609-7",
+    "publisher": "HarperCollins",
+    "coverImage": "https://example.com/sapiens-cover.jpg",
+    "ratings": 4.8,
+    "reviews": [
+      {
+        "user": "HistoryBuff",
+        "reviewText": "An enlightening journey through human history.",
+        "rating": 4.8,
+        "createdAt": "2024-01-23T13:00:00.000Z"
+      }
+    ],
+    "tags": ["History", "Anthropology", "Human Evolution"],
+    "format": "Paperback",
+    "edition": "First Edition",
+    "price": 24.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 9.0,
+      "width": 6.0,
+      "thickness": 1.0
+    },
+    "weight": 1.5,
+    "publishedLocation": "United Kingdom",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-23T01:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "genre": "Science Fiction",
+    "published_year": 2011,
+    "description": "A gripping tale of an astronaut stranded on Mars and his struggle for survival.",
+    "language": "English",
+    "pageCount": 369,
+    "ISBN": "978-0-553-41802-6",
+    "publisher": "Crown",
+    "coverImage": "https://example.com/the-martian-cover.jpg",
+    "ratings": 4.7,
+    "reviews": [
+      {
+        "user": "SpaceExplorer",
+        "reviewText": "An exhilarating and scientifically accurate space adventure.",
+        "rating": 4.7,
+        "createdAt": "2024-01-23T14:00:00.000Z"
+      }
+    ],
+    "tags": ["Space", "Survival", "Mars Exploration"],
+    "format": "Hardcover",
+    "edition": "Special Edition",
+    "price": 29.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.5,
+      "width": 5.75,
+      "thickness": 1.25
+    },
+    "weight": 1.8,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-23T02:00:00.000Z"
+  },
+  {
+    "id": 4,
+
+    "title": "Educated",
+    "author": "Tara Westover",
+    "genre": "Memoir",
+    "published_year": 2018,
+    "description": "A memoir of a woman who grows up in a strict and abusive household but later escapes to learn about the world through education.",
+    "language": "English",
+    "pageCount": 334,
+    "ISBN": "978-0-399-59050-4",
+    "publisher": "Random House",
+    "coverImage": "https://example.com/educated-cover.jpg",
+    "ratings": 4.6,
+    "reviews": [
+      {
+        "user": "Bookworm",
+        "reviewText": "A powerful and inspiring story of resilience and the pursuit of knowledge.",
+        "rating": 4.6,
+        "createdAt": "2024-01-23T15:00:00.000Z"
+      }
+    ],
+    "tags": ["Memoir", "Education", "Personal Growth"],
+    "format": "Paperback",
+    "edition": "Revised Edition",
+    "price": 19.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.25,
+      "width": 5.5,
+      "thickness": 1.0
+    },
+    "weight": 1.2,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-23T03:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "genre": "Psychological Thriller",
+    "published_year": 2019,
+    "description": "A gripping psychological thriller about a woman's sudden and mysterious silence after a shocking act.",
+    "language": "English",
+    "pageCount": 336,
+    "ISBN": "978-1-250-30169-7",
+    "publisher": "Celadon Books",
+    "coverImage": "https://example.com/silent-patient-cover.jpg",
+    "ratings": 4.8,
+    "reviews": [
+      {
+        "user": "MysteryEnthusiast",
+        "reviewText": "A mind-bending and suspenseful journey that keeps you guessing until the end.",
+        "rating": 4.8,
+        "createdAt": "2024-01-23T16:00:00.000Z"
+      }
+    ],
+    "tags": ["Psychological Thriller", "Mystery", "Suspense"],
+    "format": "Hardcover",
+    "edition": "First Edition",
+    "price": 24.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 9.0,
+      "width": 6.0,
+      "thickness": 1.25
+    },
+    "weight": 1.5,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-23T04:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "title": "Neuromancer",
+    "author": "William Gibson",
+    "genre": "Science Fiction",
+    "published_year": 1984,
+    "description": "A groundbreaking cyberpunk novel that explores the world of artificial intelligence, hacking, and virtual reality.",
+    "language": "English",
+    "pageCount": 271,
+    "ISBN": "978-0-441-56956-4",
+    "publisher": "Ace Books",
+    "coverImage": "https://example.com/neuromancer-cover.jpg",
+    "ratings": 4.5,
+    "reviews": [
+      {
+        "user": "SciFiEnthusiast",
+        "reviewText": "A visionary and influential work in the science fiction genre.",
+        "rating": 4.5,
+        "createdAt": "2024-01-23T18:00:00.000Z"
+      }
+    ],
+    "tags": ["Cyberpunk", "Science Fiction", "Dystopian"],
+    "format": "Paperback",
+    "edition": "Anniversary Edition",
+    "price": 22.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 7.75,
+      "width": 5.25,
+      "thickness": 0.75
+    },
+    "weight": 0.8,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-23T06:00:00.000Z"
+  }
+]
