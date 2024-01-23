@@ -22,12 +22,33 @@ import Book from '../models/bookModel.js';
 // };
 export const getAllBooks = async (req, res) => {
   try {
+    //filtering
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
 
-    console.log(req.query, queryObj);
-    const books = await Book.find(queryObj);
+    //advanced filtering
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    //console.log(JSON.parse(queryStr));
+
+    let query = Book.find(JSON.parse(queryStr));
+    //console.log('💥' + req.query.sort + '💢');
+
+    //console.log(req.query, queryObj);
+
+    //sorting
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      // console.log(sortBy);
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort('-createdAt');
+    }
+
+    //execution
+    const books = await query;
+    // const books = await Book.find(queryObj);
 
     res.status(200).json({
       status: 'success',
