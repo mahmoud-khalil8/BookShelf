@@ -1,0 +1,521 @@
+[
+  {
+    "id": 7,
+    "title": "The Shadow of the Wind",
+    "author": "Carlos Ruiz Zafón",
+    "genre": "Mystery, Historical Fiction",
+    "published_year": 2001,
+    "description": "A captivating tale of a young boy who discovers a mysterious book that leads him into a labyrinth of secrets and mysteries in post-war Barcelona.",
+    "language": "English",
+    "pageCount": 487,
+    "ISBN": "978-1-59448-804-2",
+    "publisher": "Penguin Books",
+    "coverImage": "https://example.com/shadow-of-the-wind-cover.jpg",
+    "ratings": 4.7,
+    "reviews": [
+      {
+        "user": "MysteryReader",
+        "reviewText": "A mesmerizing journey through a literary labyrinth.",
+        "rating": 4.7,
+        "createdAt": "2024-01-24T12:00:00.000Z"
+      }
+    ],
+    "tags": ["Mystery", "Historical Fiction", "Books about Books"],
+    "format": "Paperback",
+    "edition": "First Edition",
+    "price": 26.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.0,
+      "width": 5.25,
+      "thickness": 1.25
+    },
+    "weight": 1.4,
+    "publishedLocation": "Spain",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-24T00:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "title": "The Night Circus",
+    "author": "Erin Morgenstern",
+    "genre": "Fantasy, Romance",
+    "published_year": 2011,
+    "description": "An enchanting story of a magical competition between two illusionists, set in a mysterious and fantastical circus that appears only at night.",
+    "language": "English",
+    "pageCount": 387,
+    "ISBN": "978-0-385-53463-5",
+    "publisher": "Doubleday",
+    "coverImage": "https://example.com/night-circus-cover.jpg",
+    "ratings": 4.8,
+    "reviews": [
+      {
+        "user": "FantasyFanatic",
+        "reviewText": "A spellbinding and beautifully crafted tale of magic and love.",
+        "rating": 4.8,
+        "createdAt": "2024-01-24T13:00:00.000Z"
+      }
+    ],
+    "tags": ["Fantasy", "Romance", "Magic"],
+    "format": "Hardcover",
+    "edition": "Limited Edition",
+    "price": 32.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 9.0,
+      "width": 6.0,
+      "thickness": 1.5
+    },
+    "weight": 1.6,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-24T01:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "title": "The Overstory",
+    "author": "Richard Powers",
+    "genre": "Environmental Fiction",
+    "published_year": 2018,
+    "description": "An epic novel that weaves together the lives of nine individuals as they become activists for the preservation of forests and the environment.",
+    "language": "English",
+    "pageCount": 502,
+    "ISBN": "978-0-393-63563-5",
+    "publisher": "W. W. Norton & Company",
+    "coverImage": "https://example.com/overstory-cover.jpg",
+    "ratings": 4.6,
+    "reviews": [
+      {
+        "user": "NatureAdvocate",
+        "reviewText": "A profound and impactful exploration of humanity's connection to nature.",
+        "rating": 4.6,
+        "createdAt": "2024-01-24T14:00:00.000Z"
+      }
+    ],
+    "tags": ["Environmental Fiction", "Activism", "Nature"],
+    "format": "Paperback",
+    "edition": "Pulitzer Prize Edition",
+    "price": 28.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.5,
+      "width": 5.5,
+      "thickness": 1.25
+    },
+    "weight": 1.3,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-24T02:00:00.000Z"
+  },
+  {
+    "id": 10,
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genre": "Fiction, Philosophy",
+    "published_year": 1988,
+    "description": "A philosophical novel following the journey of a shepherd named Santiago as he embarks on a quest to discover his personal legend and the meaning of life.",
+    "language": "English",
+    "pageCount": 197,
+    "ISBN": "978-0-06-112241-5",
+    "publisher": "HarperCollins",
+    "coverImage": "https://example.com/alchemist-cover.jpg",
+    "ratings": 4.5,
+    "reviews": [
+      {
+        "user": "PhilosophySeeker",
+        "reviewText": "A transformative and inspirational tale that resonates with the soul.",
+        "rating": 4.5,
+        "createdAt": "2024-01-25T12:00:00.000Z"
+      }
+    ],
+    "tags": ["Fiction", "Philosophy", "Quest"],
+    "format": "Paperback",
+    "edition": "25th Anniversary Edition",
+    "price": 16.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.25,
+      "width": 5.5,
+      "thickness": 0.75
+    },
+    "weight": 0.9,
+    "publishedLocation": "Brazil",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T00:00:00.000Z"
+  },
+  {
+    "id": 11,
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "genre": "Dystopian, Post-Apocalyptic",
+    "published_year": 2006,
+    "description": "A post-apocalyptic novel depicting the journey of a father and son through a desolate and dangerous landscape as they struggle for survival.",
+    "language": "English",
+    "pageCount": 241,
+    "ISBN": "978-0-307-38789-9",
+    "publisher": "Knopf",
+    "coverImage": "https://example.com/the-road-cover.jpg",
+    "ratings": 4.4,
+    "reviews": [
+      {
+        "user": "Survivalist",
+        "reviewText": "A haunting and beautifully written exploration of the human spirit in the face of desolation.",
+        "rating": 4.4,
+        "createdAt": "2024-01-25T13:00:00.000Z"
+      }
+    ],
+    "tags": ["Dystopian", "Post-Apocalyptic", "Survival"],
+    "format": "Hardcover",
+    "edition": "First Edition",
+    "price": 28.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.5,
+      "width": 5.75,
+      "thickness": 1.0
+    },
+    "weight": 1.2,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T01:00:00.000Z"
+  },
+  {
+    "id": 12,
+    "title": "The Handmaid's Tale",
+    "author": "Margaret Atwood",
+    "genre": "Dystopian, Feminist Literature",
+    "published_year": 1985,
+    "description": "A dystopian narrative set in the near future, where a totalitarian regime controls women's lives, exploring themes of power, oppression, and resistance.",
+    "language": "English",
+    "pageCount": 311,
+    "ISBN": "978-0-385-49081-8",
+    "publisher": "Houghton Mifflin",
+    "coverImage": "https://example.com/handmaids-tale-cover.jpg",
+    "ratings": 4.7,
+    "reviews": [
+      {
+        "user": "FeministReader",
+        "reviewText": "A chilling and thought-provoking exploration of gender and societal control.",
+        "rating": 4.7,
+        "createdAt": "2024-01-25T14:00:00.000Z"
+      }
+    ],
+    "tags": ["Dystopian", "Feminist Literature", "Resistance"],
+    "format": "Paperback",
+    "edition": "Special Edition",
+    "price": 21.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 9.0,
+      "width": 6.0,
+      "thickness": 1.0
+    },
+    "weight": 1.1,
+    "publishedLocation": "Canada",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T02:00:00.000Z"
+  },
+  {
+    "id": 13,
+    "title": "Neverwhere",
+    "author": "Neil Gaiman",
+    "genre": "Urban Fantasy",
+    "published_year": 1996,
+    "description": "A dark and fantastical journey through the mysterious and magical world beneath the streets of London, filled with strange creatures and hidden dangers.",
+    "language": "English",
+    "pageCount": 370,
+    "ISBN": "978-0-06-055781-2",
+    "publisher": "William Morrow",
+    "coverImage": "https://example.com/neverwhere-cover.jpg",
+    "ratings": 4.6,
+    "reviews": [
+      {
+        "user": "FantasyExplorer",
+        "reviewText": "An enthralling and imaginative tale that transports you to a world of wonder and danger.",
+        "rating": 4.6,
+        "createdAt": "2024-01-25T15:00:00.000Z"
+      }
+    ],
+    "tags": ["Urban Fantasy", "Magic", "London"],
+    "format": "Paperback",
+    "edition": "Anniversary Edition",
+    "price": 19.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.0,
+      "width": 5.25,
+      "thickness": 1.0
+    },
+    "weight": 1.0,
+    "publishedLocation": "United Kingdom",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T03:00:00.000Z"
+  },
+  {
+    "id": 14,
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini",
+    "genre": "Historical Fiction",
+    "published_year": 2003,
+    "description": "A powerful and emotionally charged novel that follows the tumultuous journey of a young boy from Kabul to America, exploring friendship, betrayal, and redemption.",
+    "language": "English",
+    "pageCount": 371,
+    "ISBN": "978-1-59448-000-8",
+    "publisher": "Riverhead Books",
+    "coverImage": "https://example.com/kite-runner-cover.jpg",
+    "ratings": 4.8,
+    "reviews": [
+      {
+        "user": "LiteraryHeart",
+        "reviewText": "A heartbreaking and beautifully written story that stays with you long after you've finished reading.",
+        "rating": 4.8,
+        "createdAt": "2024-01-25T16:00:00.000Z"
+      }
+    ],
+    "tags": ["Historical Fiction", "Friendship", "Redemption"],
+    "format": "Hardcover",
+    "edition": "10th Anniversary Edition",
+    "price": 27.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 9.0,
+      "width": 6.0,
+      "thickness": 1.25
+    },
+    "weight": 1.3,
+    "publishedLocation": "Afghanistan",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T04:00:00.000Z"
+  },
+  {
+    "id": 15,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "genre": "Dystopian",
+    "published_year": 1932,
+    "description": "A classic dystopian novel set in a future society where technological and scientific advancements have created a controlled and conformist world.",
+    "language": "English",
+    "pageCount": 311,
+    "ISBN": "978-0-06-085052-4",
+    "publisher": "Harper Perennial Modern Classics",
+    "coverImage": "https://example.com/brave-new-world-cover.jpg",
+    "ratings": 4.5,
+    "reviews": [
+      {
+        "user": "DystopianExplorer",
+        "reviewText": "A thought-provoking and unsettling vision of a possible future that remains relevant today.",
+        "rating": 4.5,
+        "createdAt": "2024-01-25T18:00:00.000Z"
+      }
+    ],
+    "tags": ["Dystopian", "Social Commentary", "Science Fiction"],
+    "format": "Paperback",
+    "edition": "Centennial Edition",
+    "price": 18.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 7.75,
+      "width": 5.25,
+      "thickness": 0.75
+    },
+    "weight": 0.9,
+    "publishedLocation": "United Kingdom",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T06:00:00.000Z"
+  },
+  {
+    "id": 16,
+    "title": "The Goldfinch",
+    "author": "Donna Tartt",
+    "genre": "Fiction",
+    "published_year": 2013,
+    "description": "A gripping and emotionally charged novel that follows the life of a young boy after a tragic event in an art museum, exploring themes of loss, survival, and the power of art.",
+    "language": "English",
+    "pageCount": 771,
+    "ISBN": "978-0-316-05542-0",
+    "publisher": "Little, Brown and Company",
+    "coverImage": "https://example.com/goldfinch-cover.jpg",
+    "ratings": 4.6,
+    "reviews": [
+      {
+        "user": "ArtAficionado",
+        "reviewText": "A masterfully written and deeply moving journey through the complexities of life and art.",
+        "rating": 4.6,
+        "createdAt": "2024-01-25T15:00:00.000Z"
+      }
+    ],
+    "tags": ["Fiction", "Art", "Loss"],
+    "format": "Hardcover",
+    "edition": "Pulitzer Prize Edition",
+    "price": 34.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 9.5,
+      "width": 6.5,
+      "thickness": 1.75
+    },
+    "weight": 2.0,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T03:00:00.000Z"
+  },
+  {
+    "id": 17,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Classic, Fiction",
+    "published_year": 1960,
+    "description": "A classic novel that explores racial injustice and moral growth in the American South through the eyes of a young girl named Scout Finch.",
+    "language": "English",
+    "pageCount": 324,
+    "ISBN": "978-0-06-112008-4",
+    "publisher": "J.B. Lippincott & Co.",
+    "coverImage": "https://example.com/to-kill-a-mockingbird-cover.jpg",
+    "ratings": 4.8,
+    "reviews": [
+      {
+        "user": "LiteraryClassicist",
+        "reviewText": "An enduring masterpiece that tackles profound societal issues with grace and insight.",
+        "rating": 4.8,
+        "createdAt": "2024-01-25T16:00:00.000Z"
+      }
+    ],
+    "tags": ["Classic", "Fiction", "Social Justice"],
+    "format": "Paperback",
+    "edition": "50th Anniversary Edition",
+    "price": 14.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.25,
+      "width": 5.5,
+      "thickness": 0.75
+    },
+    "weight": 0.9,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T04:00:00.000Z"
+  },
+  {
+    "id": 18,
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "genre": "Science Fiction, Humor",
+    "published_year": 1979,
+    "description": "A humorous and absurd science fiction adventure that follows the misadventures of Arthur Dent as he explores the galaxy after Earth's destruction.",
+    "language": "English",
+    "pageCount": 193,
+    "ISBN": "978-0-345-39180-3",
+    "publisher": "Pan Books",
+    "coverImage": "https://example.com/hitchhikers-guide-cover.jpg",
+    "ratings": 4.7,
+    "reviews": [
+      {
+        "user": "GalacticExplorer",
+        "reviewText": "A comedic and satirical masterpiece that offers a unique perspective on the universe.",
+        "rating": 4.7,
+        "createdAt": "2024-01-25T18:00:00.000Z"
+      }
+    ],
+    "tags": ["Science Fiction", "Humor", "Adventure"],
+    "format": "Paperback",
+    "edition": "Deluxe Edition",
+    "price": 15.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 7.0,
+      "width": 4.25,
+      "thickness": 0.75
+    },
+    "weight": 0.5,
+    "publishedLocation": "United Kingdom",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T06:00:00.000Z"
+  },
+
+  {
+    "id": 19,
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel García Márquez",
+    "genre": "Magical Realism, Literary Fiction",
+    "published_year": 1967,
+    "description": "A landmark novel that explores the multi-generational story of the Buendía family in the fictional town of Macondo, blending magical elements with historical events.",
+    "language": "Spanish",
+    "pageCount": 417,
+    "ISBN": "978-0-06-112009-1",
+    "publisher": "Harper & Row",
+    "coverImage": "https://example.com/one-hundred-years-cover.jpg",
+    "ratings": 4.8,
+    "reviews": [
+      {
+        "user": "LiteraryExplorer",
+        "reviewText": "A literary masterpiece that weaves a tapestry of magical realism and profound storytelling.",
+        "rating": 4.8,
+        "createdAt": "2024-01-25T16:00:00.000Z"
+      }
+    ],
+    "tags": ["Magical Realism", "Literary Fiction", "Family Saga"],
+    "format": "Paperback",
+    "edition": "50th Anniversary Edition",
+    "price": 22.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 8.0,
+      "width": 5.25,
+      "thickness": 1.0
+    },
+    "weight": 1.0,
+    "publishedLocation": "Colombia",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T04:00:00.000Z"
+  },
+  {
+    "id": 20,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Classic, Jazz Age",
+    "published_year": 1925,
+    "description": "An iconic novel set in the roaring 1920s, exploring themes of wealth, love, and the American Dream through the lens of the mysterious Jay Gatsby.",
+    "language": "English",
+    "pageCount": 180,
+    "ISBN": "978-0-7432-7356-5",
+    "publisher": "Scribner",
+    "coverImage": "https://example.com/great-gatsby-cover.jpg",
+    "ratings": 4.7,
+    "reviews": [
+      {
+        "user": "ClassicEnthusiast",
+        "reviewText": "A timeless and elegantly written portrayal of the Jazz Age that continues to resonate with readers.",
+        "rating": 4.7,
+        "createdAt": "2024-01-25T18:00:00.000Z"
+      }
+    ],
+    "tags": ["Classic", "Jazz Age", "American Dream"],
+    "format": "Hardcover",
+    "edition": "90th Anniversary Edition",
+    "price": 20.99,
+    "availableFormats": ["Hardcover", "Paperback", "E-book"],
+    "dimensions": {
+      "height": 7.75,
+      "width": 5.25,
+      "thickness": 0.75
+    },
+    "weight": 0.8,
+    "publishedLocation": "United States",
+    "isBestseller": true,
+    "isRecommended": true,
+    "createdAt": "2024-01-25T06:00:00.000Z"
+  }
+]

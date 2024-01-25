@@ -2,6 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import Book from '../models/bookModel.js';
+import APIFeatures from '../utils/apiFeatures.js';
 // const data = JSON.parse(fs.readFileSync('data.json'));
 
 // export const checkId = (req, res, next, val) => {
@@ -20,59 +21,96 @@ import Book from '../models/bookModel.js';
 //   }
 //   next();
 // };
+export const aliasBiggestBooks = (req, res, next) => {
+  req.query.limit = '3';
+  req.query.sort = '-pageCount,published_year';
+  req.query.fields = 'title,author';
+  next();
+};
+
 export const getAllBooks = async (req, res) => {
   try {
-    //filtering
-    const queryObj = { ...req.query };
-    const excludedFields = ['page', 'sort', 'limit', 'fields'];
-    excludedFields.forEach((el) => delete queryObj[el]);
+    const features = new APIFeatures(Book.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+    const books = await features.getBooks();
 
-    //advanced filtering
-    let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    //console.log(JSON.parse(queryStr));
-
-    let query = Book.find(JSON.parse(queryStr));
-    //console.log('💥' + req.query.sort + '💢');
-
-    //console.log(req.query, queryObj);
-
-    //sorting
-    if (req.query.sort) {
-      const sortBy = req.query.sort.split(',').join(' ');
-      // console.log(sortBy);
-      query = query.sort(sortBy);
-    } else {
-      query = query.sort('-createdAt');
-    }
-
-    //field limiting
-    if (req.query.fields) {
-      const fields = req.query.fields.split(',').join(' ');
-      query = query.select(fields);
-    } else {
-      query = query.select('-__v');
-    }
-
-    //pagination
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 100;
-    const skip = (page - 1) * limit;
-
-    query = query.skip(skip).limit(limit);
-
-    if (req.query.page) {
-      const numBooks = await Book.countDocuments();
-      if (skip >= numBooks) throw new Error('This page does not exist');
-    }
-
-    //execution
-    const books = await query;
     // const books = await Book.find(queryObj);
 
     res.status(200).json({
-      status: 'success',
+      status: 'success🙌',
       books,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+export const getBookStats = async (req, res) => {
+  try {
+    const stats = await Book.aggregate([
+      {
+        $match: { pageCount: { $gte: 100 } },
+      },
+      {
+        $group: {
+          _id: '$ratings',
+          avgPageCount: { $avg: '$pageCount' },
+          minPageCount: { $min: '$pageCount' },
+          maxPageCount: { $max: '$pageCount' },
+        },
+      },
+      {
+        $sort: { avgPageCount: 1 },
+      },
+    ]);
+    res.status(200).json({
+      status: 'success',
+
+      stats,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+export const getGroupFiction = async (req, res) => {
+  try {
+    const stats = await Book.aggregate([
+      {
+        $match: {
+          $or: [{ genre: 'Fiction' }, { genre: { $regex: /Fiction/i } }],
+          pageCount: { $gte: 100 },
+        },
+      },
+      {
+        $group: {
+          _id: {
+            $cond: {
+              if: { $regexMatch: { input: '$genre', regex: /Fiction/i } },
+              then: 'Fiction',
+              else: '$genre',
+            },
+          },
+          numBooks: { $sum: 1 },
+          avgPageCount: { $avg: '$pageCount' },
+          minPageCount: { $min: '$pageCount' },
+          maxPageCount: { $max: '$pageCount' },
+        },
+      },
+      {
+        $sort: { avgPageCount: 1 },
+      },
+    ]);
+    res.status(200).json({
+      status: 'success',
+      stats,
     });
   } catch (err) {
     res.status(404).json({
@@ -83,11 +121,11 @@ export const getAllBooks = async (req, res) => {
 };
 
 export const getBook = (req, res) => {
-  const book = data.books.find((elem) => elem.id === req.params.id);
+  //const book = data.books.find((elem) => elem.id === req.params.id);
 
   res.status(200).json({
     status: 'success',
-    book,
+    //book,
   });
 };
 
