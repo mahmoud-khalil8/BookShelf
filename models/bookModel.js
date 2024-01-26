@@ -90,6 +90,20 @@ const bookSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
+bookSchema.post('save', function (doc, next) {
+  console.log(doc);
+  next();
+});
+bookSchema.pre('save', function (next) {
+  console.log(this);
+  next();
+});
+//query middleware
+//showing only the books published after 2000
+bookSchema.pre(/^find/, function (next) {
+  this.find({ published_year: { $gte: 2000 } });
+  next();
+});
 bookSchema.virtual('priceInEgp').get(function () {
   return Math.round(this.price * 60);
 });
