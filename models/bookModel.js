@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import validator from 'validator';
 
 const bookSchema = new mongoose.Schema(
   {
@@ -11,6 +12,15 @@ const bookSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A book must have a title'],
       unique: true,
+      maxlength: [
+        40,
+        'A book title must have less or equal than 40 characters',
+      ],
+      minlength: [
+        10,
+        'A book title must have more or equal than 10 characters',
+      ],
+      trim: true,
     },
     author: {
       type: String,
@@ -18,6 +28,7 @@ const bookSchema = new mongoose.Schema(
     },
     genre: {
       type: String,
+      validate: [validator.isAlpha, 'Book genre must only contain characters'],
       required: [true, 'A book must have a genre'],
     },
     published_year: {
@@ -51,6 +62,8 @@ const bookSchema = new mongoose.Schema(
     ratings: {
       type: Number,
       default: 0,
+      maxlength: [5, 'A book rating must be less or equal than 5'],
+      minlength: [1, 'A book rating must be more or equal than 1'],
     },
     reviews: [
       {
@@ -74,6 +87,16 @@ const bookSchema = new mongoose.Schema(
     format: String,
     edition: String,
     price: Number,
+    priceDiscount: {
+      type: Number,
+      validate: {
+        validator: function (val) {
+          return val < this.price;
+        },
+        message: 'Discount price ({VALUE}) should be below regular price',
+      },
+    },
+
     availableFormats: [String],
     dimensions: {
       height: Number,
@@ -90,12 +113,12 @@ const bookSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
-bookSchema.post('save', function (doc, next) {
-  console.log(doc);
-  next();
-});
 bookSchema.pre('save', function (next) {
   console.log(this);
+  next();
+});
+bookSchema.post('save', function (doc, next) {
+  console.log(doc);
   next();
 });
 //query middleware
@@ -104,6 +127,15 @@ bookSchema.pre(/^find/, function (next) {
   this.find({ published_year: { $gte: 2000 } });
   next();
 });
+bookSchema.post(/^find/, function (docs, next) {
+  console.log(docs);
+  next();
+});
+bookSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { published_year: { $gte: 2000 } } });
+  next();
+});
+
 bookSchema.virtual('priceInEgp').get(function () {
   return Math.round(this.price * 60);
 });

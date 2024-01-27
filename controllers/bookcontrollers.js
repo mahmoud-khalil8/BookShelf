@@ -120,12 +120,17 @@ export const getGroupFiction = async (req, res) => {
   }
 };
 
-export const getBook = (req, res) => {
-  //const book = data.books.find((elem) => elem.id === req.params.id);
+export const getBook = async (req, res) => {
+  const book = await Book.findById(req.params.id);
+  if (!book) {
+    return next (new AppError('No book found with that ID', 404));
+  }
 
+
+  
   res.status(200).json({
     status: 'success',
-    //book,
+    book,
   });
 };
 

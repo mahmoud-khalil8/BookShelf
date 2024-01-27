@@ -2,6 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 
 import bookRouter from './routers/bookroutes.js';
+import AppError from './utils/appError.js';
+import{ globalErrorController} from './controllers/errorController.js';
 const app = express();
 
 // 1) MIDDLEWARES
@@ -24,5 +26,15 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/books', bookRouter);
+
+//error handling middleware
+app.all('*', (req, res, next) => {
+  //passing an argument to next() will be treated as an error
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(globalErrorController)
+
+
 
 export default app;
