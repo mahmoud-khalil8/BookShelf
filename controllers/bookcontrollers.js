@@ -121,18 +121,20 @@ export const getGroupFiction = async (req, res) => {
 };
 
 export const getBook = async (req, res) => {
-  const book = await Book.findById(req.params.id);
-  if (!book) {
-    return next (new AppError('No book found with that ID', 404));
+  try {
+    const book = await Book.findById(req.params.id);
+    // const book = data.books.find((el) => el.id === id);
+    res.status(200).json({
+      status: 'success',
+      book,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
   }
-
-
-  
-  res.status(200).json({
-    status: 'success',
-    book,
-  });
-};
+}
 
 export const postBook = async (req, res) => {
   try {
