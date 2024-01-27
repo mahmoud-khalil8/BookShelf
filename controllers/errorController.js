@@ -28,12 +28,16 @@ const sendErrorProd = (err, res) => {
 
 }
 export const globalErrorController= (err, req, res, next) => {
+    console.log(process.env.Node_ENV)
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'error';
     if (process.env.Node_ENV === 'development') {
         sendErrorDev(err, res);
     }
     else if (process.env.Node_ENV === 'production') {
+        const error={...err};
+        error.message=err.message;
+        if(error.name==='CastError') error=new AppError(`Invalid ${error.path}: ${error.value}.`,400);
         sendErrorProd(err, res);
     }
 
