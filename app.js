@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import bookRouter from './routers/bookroutes.js';
 import AppError from './utils/appError.js';
 import{ globalErrorController} from './controllers/errorController.js';
+import userRouter from './routers/userRoutes.js';
 const app = express();
 
 // 1) MIDDLEWARES
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/books', bookRouter);
+app.use('/api/v1/users', userRouter);
 
 //error handling middleware
 app.all('*', (req, res, next) => {

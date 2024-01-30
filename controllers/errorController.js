@@ -28,7 +28,6 @@ const sendErrorProd = (err, res) => {
 
 }
 export const globalErrorController= (err, req, res, next) => {
-    console.log(process.env.Node_ENV)
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'error';
     if (process.env.Node_ENV === 'development') {
@@ -38,6 +37,12 @@ export const globalErrorController= (err, req, res, next) => {
         const error={...err};
         error.message=err.message;
         if(error.name==='CastError') error=new AppError(`Invalid ${error.path}: ${error.value}.`,400);
+        if(error.code===11000) error=new AppError(`Duplicate field value: ${error.keyValue.name}. Please use another value!`,400);
+        if(error.name==='ValidationError') error=new AppError(`${error.message}`,400);
+        if(error.name==='JsonWebTokenError') error=new AppError(`Invalid token. Please log in again!`,401);
+        if(error.name==='TokenExpiredError') error=new AppError(`Your token has expired! Please log in again.`,401);
+
+        
         sendErrorProd(err, res);
     }
 

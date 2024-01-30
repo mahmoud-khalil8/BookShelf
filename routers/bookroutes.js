@@ -11,8 +11,11 @@ import {
   getBookStats,
   getGroupFiction,
 } from '../controllers/bookcontrollers.js';
+import { protect, signup } from '../controllers/authController.js';
 
 const router = express.Router();
+router.post('/signup' , signup) ;
+
 
 //router.param('id' ,checkId) ;
 
@@ -23,7 +26,7 @@ This is often used for parameter validation or preprocessing.*/
 router.route('/top-5-books').get(aliasBiggestBooks, getAllBooks);
 router.route('/stats').get(getBookStats);
 router.route('/groupFiction').get(getGroupFiction);
-router.route('/').get(getAllBooks).post(/*checkBody,*/ postBook);
+router.route('/').get(protect,getAllBooks).post(/*checkBody,*/ postBook);
 
 router.route('/:id').get(getBook).patch(updateBook).delete(deleteBook);
 

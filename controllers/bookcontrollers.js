@@ -3,6 +3,7 @@ import fs from 'fs';
 import mongoose from 'mongoose';
 import Book from '../models/bookModel.js';
 import APIFeatures from '../utils/apiFeatures.js';
+import catchAsync from '../utils/catchAsync.js';
 // const data = JSON.parse(fs.readFileSync('data.json'));
 
 // export const checkId = (req, res, next, val) => {
@@ -120,24 +121,21 @@ export const getGroupFiction = async (req, res) => {
   }
 };
 
-export const getBook = async (req, res) => {
-  try {
+export const getBook = catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id);
+    if(!book){
+      return next(new AppError('No book found with that ID', 404));
+    }
     // const book = data.books.find((el) => el.id === id);
     res.status(200).json({
       status: 'success',
       book,
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-}
+   
+})
 
-export const postBook = async (req, res) => {
-  try {
+export const postBook = catchAsync(async (req, res) => {
+  
     const newBook = await Book.create(req.body);
 
     //const newId = data.books[data.books.length - 1].id + 1;
@@ -154,39 +152,22 @@ export const postBook = async (req, res) => {
         book: newBook,
       },
     });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
+});
 //});
 //};
-export const updateBook = async (req, res) => {
-  try {
+export const updateBook = catchAsync(async (req, res) => {
+  
     const bookId = req.params.id;
     console.log('Provided book ID:', bookId);
 
     // Check if the provided ID is a valid ObjectId
-    if (!mongoose.Types.ObjectId.isValid(bookId)) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'Invalid book ID',
-      });
-    }
 
     const updatedBook = await Book.findByIdAndUpdate(bookId, req.body, {
       new: true,
       runValidators: true,
     });
+    if(!updatedBook){return next(new AppError('No book found with that ID', 404));}
 
-    if (!updatedBook) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'Book not found',
-      });
-    }
 
     res.status(200).json({
       status: 'success',
@@ -194,25 +175,14 @@ export const updateBook = async (req, res) => {
         book: updatedBook,
       },
     });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err.message,
-    });
-  }
-};
+});
 
-export const deleteBook = async (req, res) => {
-  try {
-    await Book.findByIdAndDelete(req.params.id);
+export const deleteBook = catchAsync(async (req, res) => {
+  const book =await Book.findByIdAndDelete(req.params.id);
+  if(!book){return next(new AppError('No book found with that ID', 404));}
     res.status(204).json({
       status: 'success',
       data: null,
     });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
+  
+});
