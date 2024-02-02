@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import validator from 'validator';
+import slugify from 'slugify';
 
 const bookSchema = new mongoose.Schema(
   {
-    id: {
+    id:{
       type: Number,
       required: [true, 'A book must have an id'],
       unique: true,
@@ -17,7 +17,7 @@ const bookSchema = new mongoose.Schema(
         'A book title must have less or equal than 40 characters',
       ],
       minlength: [
-        10,
+        3,
         'A book title must have more or equal than 10 characters',
       ],
       trim: true,
@@ -28,7 +28,6 @@ const bookSchema = new mongoose.Schema(
     },
     genre: {
       type: String,
-      validate: [validator.isAlpha, 'Book genre must only contain characters'],
       required: [true, 'A book must have a genre'],
     },
     published_year: {
@@ -113,14 +112,15 @@ const bookSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
+bookSchema.virtual('priceInEgp').get(function () {
+  return Math.round(this.price * 60);
+});
 bookSchema.pre('save', function (next) {
-  console.log(this);
+  this.slug = slugify(this.title, { lower: true });
+  //console.log(this.id);
   next();
 });
-bookSchema.post('save', function (doc, next) {
-  console.log(doc);
-  next();
-});
+
 //query middleware
 //showing only the books published after 2000
 bookSchema.pre(/^find/, function (next) {
@@ -128,7 +128,7 @@ bookSchema.pre(/^find/, function (next) {
   next();
 });
 bookSchema.post(/^find/, function (docs, next) {
-  console.log(docs);
+  //console.log(docs);
   next();
 });
 bookSchema.pre('aggregate', function (next) {
@@ -136,9 +136,6 @@ bookSchema.pre('aggregate', function (next) {
   next();
 });
 
-bookSchema.virtual('priceInEgp').get(function () {
-  return Math.round(this.price * 60);
-});
 const Book = mongoose.model('Book', bookSchema);
 
 export default Book;

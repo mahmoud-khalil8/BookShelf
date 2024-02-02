@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import Book from '../models/bookModel.js';
 import APIFeatures from '../utils/apiFeatures.js';
 import catchAsync from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
 // const data = JSON.parse(fs.readFileSync('data.json'));
 
 // export const checkId = (req, res, next, val) => {
@@ -70,7 +71,7 @@ export const getBookStats = async (req, res) => {
       },
     ]);
     res.status(200).json({
-      status: 'success',
+      status: 'success', 
 
       stats,
     });
@@ -121,7 +122,7 @@ export const getGroupFiction = async (req, res) => {
   }
 };
 
-export const getBook = catchAsync(async (req, res) => {
+export const getBook = catchAsync(async (req, res,next) => {
     const book = await Book.findById(req.params.id);
     if(!book){
       return next(new AppError('No book found with that ID', 404));
@@ -134,28 +135,23 @@ export const getBook = catchAsync(async (req, res) => {
    
 })
 
-export const postBook = catchAsync(async (req, res) => {
-  
+export const postBook = catchAsync(async (req, res, next) => {
     const newBook = await Book.create(req.body);
+    console.log(newBook.id);
+    console.log(Book.findById(newBook.id))
 
-    //const newId = data.books[data.books.length - 1].id + 1;
-    //const newItem = Object.assign({ id: newId }, req.body);
-    //data.books.push(newItem);
-    //fs.writeFile('data.json', JSON.stringify(data), (err) => {
-    //if (err) {
-    //console.error(err);
-    //res.status(500).send('internal server error');
-    //} else {
     res.status(201).json({
       status: 'success',
       data: {
-        book: newBook,
+        book: newBook,  
       },
     });
+  
 });
+
 //});
 //};
-export const updateBook = catchAsync(async (req, res) => {
+export const updateBook = catchAsync(async (req, res,next) => {
   
     const bookId = req.params.id;
     console.log('Provided book ID:', bookId);
@@ -177,12 +173,31 @@ export const updateBook = catchAsync(async (req, res) => {
     });
 });
 
-export const deleteBook = catchAsync(async (req, res) => {
-  const book =await Book.findByIdAndDelete(req.params.id);
-  if(!book){return next(new AppError('No book found with that ID', 404));}
+
+export const deleteBook = async (req, res,next) => {
+  try{
+    const bookId = req.params.id;
+
+    // Check if the bookId is a valid ObjectId
+    if (!mongoose.isValidObjectId(bookId)) {
+      return next(new AppError('Invalid book ID', 400));
+    }
+
+    const book = await Book.findByIdAndDelete(bookId);
+    if (!book) {
+      return next(new AppError('No book found with that ID', 404));
+    }
+
     res.status(204).json({
       status: 'success',
       data: null,
+  });}
+  catch(err){
+    res.status(404).json({
+      status: 'fail',
+      message: err,
     });
+  }
+
   
-});
+};

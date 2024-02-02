@@ -18,7 +18,7 @@ mongoose
     process.exit(1); // Exit the application if there's an issue with the database connection
   });
 
-const data = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));
+const data = JSON.parse(fs.readFileSync('./moreData.json', 'utf-8'));
 const importData = async () => {
   try {
     await Book.create(data);

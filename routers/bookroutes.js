@@ -11,7 +11,7 @@ import {
   getBookStats,
   getGroupFiction,
 } from '../controllers/bookcontrollers.js';
-import { protect, signup } from '../controllers/authController.js';
+import { protect, restrictTo, signup } from '../controllers/authController.js';
 
 const router = express.Router();
 router.post('/signup' , signup) ;
@@ -26,9 +26,9 @@ This is often used for parameter validation or preprocessing.*/
 router.route('/top-5-books').get(aliasBiggestBooks, getAllBooks);
 router.route('/stats').get(getBookStats);
 router.route('/groupFiction').get(getGroupFiction);
-router.route('/').get(protect,getAllBooks).post(/*checkBody,*/ postBook);
+router.route('/').get(protect,getAllBooks).post( postBook);
 
-router.route('/:id').get(getBook).patch(updateBook).delete(deleteBook);
+router.route('/:id').get(getBook).patch(updateBook).delete(protect,restrictTo('admin'),deleteBook);
 
 const bookRouter = router;
 export default bookRouter;
