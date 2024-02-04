@@ -3,6 +3,8 @@ import catchAsync from '../utils/catchAsync.js';
 import  jwt from 'jsonwebtoken';
 import {promisify} from 'util';
 import sendEmail from '../utils/mail.js';
+import crypto from 'crypto';
+
 
 import AppError from '../utils/appError.js';
 const signupToken = id => {
@@ -32,7 +34,7 @@ export const signup = catchAsync(async (req, res, next) => {
     token,
     data: {
       user: newUser,
-    },
+    }
   });
 });
 
@@ -133,9 +135,36 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
     await user.save({validateBeforeSave: false});
     return next(new AppError('There was an error sending the email. Try again later!'), 500);
   }
+
 }
 );
 
 
 
-export const resetPassword = catchAsync(async (req, res, next) => {});
+
+export const resetPassword = catchAsync(async (req, res, next) => {
+
+  // 1) Get user based on the token
+  const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+  const user = await User.findOne({passwordResetToken: hashedToken, passwordResetExpires: {$gt: Date.now()}});
+
+  // 2) If token has not expired, and there is user, set the new password
+  if(!user){
+    return next(new AppError('Token is invalid or has expired', 400));
+  }
+  user.password = req.body.password;
+  user.confirmPassword = req.body.confirmPassword;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await user.save();
+
+  // 3) Update changedPasswordAt property for the user
+  // 4) Log the user in, send JWT
+  const token = signupToken(user._id);
+  res.status(200).json({
+    status: 'success',
+    token,
+  });
+  
+
+});
