@@ -138,7 +138,7 @@ export const getBook = catchAsync(async (req, res,next) => {
 export const postBook = catchAsync(async (req, res, next) => {
     const newBook = await Book.create(req.body);
     console.log(newBook.id);
-    console.log(Book.findById(newBook.id))
+    console.log(Book.findById(newBook._id))
 
     res.status(201).json({
       status: 'success',

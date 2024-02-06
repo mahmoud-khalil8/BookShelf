@@ -5,14 +5,37 @@ import bookRouter from './routers/bookroutes.js';
 import AppError from './utils/appError.js';
 import{ globalErrorController} from './controllers/errorController.js';
 import userRouter from './routers/userRoutes.js';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+import xss from 'xss-clean';
+
 const app = express();
 
 // 1) MIDDLEWARES
+
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+//set security http headers
+app.use(helmet()) 
+//limit requesting from same ip
+const limiter =rateLimit({
+  max:100 ,
+  windowMs:60*60*1000,
+  message:'Too many requests from this ip, try again in an hour'
+})
 
-app.use(express.json());
+
+app.use('/api' ,limiter)
+
+//body parser, reading data from body into req.body
+app.use(express.json({limit:'10kb'}));
+
+//data sanitization against nosql query injection
+app.use(mongoSanitize());
+
 const __dirname = new URL('.', import.meta.url).pathname;
 
 app.use(express.static(`${__dirname}/public`));

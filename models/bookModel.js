@@ -83,6 +83,7 @@ const bookSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+
     format: String,
     edition: String,
     price: Number,

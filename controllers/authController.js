@@ -13,9 +13,16 @@ const signToken = id => {
   });
 }
 const createSendToken =(user,statusCode,res)=>{
-
+  const cookieOptions={
+    expires:new Date( 
+      Date.now()+process.env.JWT_COOKIE_EXPIRES_IN *24*60*60*1000 
+    ) ,
+     httpOnly:true 
+  }
   const token = signToken(user._id)
-  
+  if (process.env.NODE_ENV==='production') cookieOptions.secure=true ;
+  res.cookie('jwt',token,cookieOptions)
+  user.password=undefined
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -167,19 +174,33 @@ export const resetPassword = catchAsync(async (req, res, next) => {
   
 
 });
-export const updatePassword =catchAsync(async(req,res,next)=>{
+export const updatePassword = catchAsync(async (req, res, next) => {
+  // Find the user by ID and select the password field
+  const user = await User.findById(req.user._id).select('+password');
 
-  const user = await User.findById(req.user.id).select('+password') ; 
-  
-  if(!(await user.correctPassword(req.body.passwordCurrent,user.password))){
-    return next(new AppError('your current password is wrong ',401))
+  // If user is not found, return an error
+  if (!user) {
+    return next(new AppError('User not found', 404));
   }
 
-  user.password=req.body.password ;
-  user.confirmPassword=req.body.confirmPassword ;
-  await user.save() ;
-
-    createSendToken(user,200,res) ;
+  // Check if the current password matches the user's password
+  console.log(req.body.passwordCurrent,user.password)
+  const isCorrectPassword = await user.correctPassword(req.body.passwordCurrent, user.password);
 
 
-})
+
+  // If the current password is incorrect, return an error
+  if (!isCorrectPassword) {
+    return next(new AppError('Your current password is wrong', 401));
+  }
+
+  // Update the user's password and confirmPassword fields
+  user.password = req.body.password;
+  user.confirmPassword = req.body.confirmPassword;
+
+  // Save the updated user object
+  await user.save();
+
+  // Create and send a new token
+  createSendToken(user, 200, res);
+});
