@@ -9,6 +9,7 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
+import hpp from 'hpp';
 
 const app = express();
 
@@ -35,6 +36,22 @@ app.use(express.json({limit:'10kb'}));
 
 //data sanitization against nosql query injection
 app.use(mongoSanitize());
+
+//data sanitization against xss
+app.use(xss());
+
+//prevent parameter pollution
+app.use(hpp({
+  whitelist:[
+    'duration',
+    'ratingsQuantity',
+    'ratingsAverage',
+    'maxGroupSize',
+    'difficulty',
+    'price'
+  ]
+}))
+
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
