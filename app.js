@@ -5,6 +5,7 @@ import bookRouter from './routers/bookroutes.js';
 import AppError from './utils/appError.js';
 import{ globalErrorController} from './controllers/errorController.js';
 import userRouter from './routers/userRoutes.js';
+import reviewRouter from './routers/reviewRoutes.js';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
@@ -68,6 +69,7 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/books', bookRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
 
 //error handling middleware
 app.all('*', (req, res, next) => {

@@ -64,17 +64,6 @@ const bookSchema = new mongoose.Schema(
       maxlength: [5, 'A book rating must be less or equal than 5'],
       minlength: [1, 'A book rating must be more or equal than 1'],
     },
-    reviews: [
-      {
-        user: String,
-        reviewText: String,
-        rating: Number,
-        createdAt: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
     tags: {
       type: [String],
       default: [],
@@ -116,6 +105,12 @@ const bookSchema = new mongoose.Schema(
 bookSchema.virtual('priceInEgp').get(function () {
   return Math.round(this.price * 60);
 });
+bookSchema.virtual('reviews',{
+  ref:'Review',
+  foreignField:'book',
+  localField:'_id'
+});
+
 bookSchema.pre('save', function (next) {
   this.slug = slugify(this.title, { lower: true });
   //console.log(this.id);

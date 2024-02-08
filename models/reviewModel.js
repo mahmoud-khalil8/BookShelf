@@ -31,6 +31,22 @@ const reviewSchema = new mongoose.Schema({
     toObject: { virtuals: true },
 });
 
+reviewSchema.pre(/^find/, function (next) {
+    //populate is used to fill the fields of the document with the actual data from other collections 
+    // this.populate({
+    //     path: 'book',
+    //     select: 'title',
+    // }).populate({
+    //     path: 'user',
+    //     select: 'name',
+    // });
+    this.populate({
+        path: 'user',
+        select: 'name',
+    });
+    next();
+}
+); 
 
 const Review = mongoose.model('Review', reviewSchema);
 export default Review;

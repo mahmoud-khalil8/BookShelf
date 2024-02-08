@@ -1,5 +1,5 @@
-import Review from "../models/reviewModel";
-import catchAsync from "../utils/catchAsync";
+import Review from "../models/reviewModel.js";
+import catchAsync from "../utils/catchAsync.js";
 
 export const getAllReviews = catchAsync(async (req, res) => {
     try {

@@ -123,7 +123,7 @@ export const getGroupFiction = async (req, res) => {
 };
 
 export const getBook = catchAsync(async (req, res,next) => {
-    const book = await Book.findById(req.params.id);
+    const book = await Book.findById(req.params.id).populate('reviews');
     if(!book){
       return next(new AppError('No book found with that ID', 404));
     }
